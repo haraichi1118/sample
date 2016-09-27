@@ -9,12 +9,19 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script>
 $(function() {
+	var delayFlg = true;
 	$(window).scroll(function(){
-		console.log($("#testImg").attr("src"))
-		if ($("#testImg").attr("src") == 'img/squirrel.jpeg') {
-			$("#testImg").attr("src", "img/peach.jpeg" )
-		} else  {
-			$("#testImg").attr("src", "img/squirrel.jpeg" )
+		console.log($("#testImg").attr("src"));
+		if (delayFlg) {
+			delayFlg = false;
+			setTimeout(function(){
+				if ($("#testImg").attr("src") == 'img/squirrel.jpeg') {
+					$("#testImg").attr("src", "img/peach.jpeg" );
+				} else  {
+					$("#testImg").attr("src", "img/squirrel.jpeg" );
+				}
+				delayFlg = true;
+			}, 300);
 		}
 	})
 });
@@ -35,7 +42,7 @@ body {
 -->
 </style>
 <body>
-	<div class="logo">
+	<div class="logo" id="target">
 		<img src="img/squirrel.jpeg" width="100" height="100" alt="" id="testImg" />
 	</div>
 </body>
